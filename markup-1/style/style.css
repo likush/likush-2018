@@ -26,10 +26,6 @@ h1, h2, h3, p, figure {
     margin: 0;
 }
 
-a:hover {
-    text-shadow: 0 0 5px #000;
-}
-
 .container {
     width: 1600px;
     margin: auto;
@@ -83,10 +79,12 @@ a:hover {
 .header {
     position: absolute;
     display: grid;
-    grid-template-columns: 394px 1fr 90px;
-    grid-template-rows: 122px;
-    align-items: center;
+    grid-template-columns: 370px 1fr 90px;
     padding: 0 180px;
+}
+
+.logo {
+    align-self: center;
 }
 
 .nav {
@@ -94,7 +92,6 @@ a:hover {
 }
 
 .nav__item {
-    margin-right: 50px;
     font-family: 'Gentium Book Basic', serif;
     font-size: 21px;
 }
@@ -103,13 +100,23 @@ a:hover {
     margin-right: 0;
 }
 
-.nav__link {
-    text-decoration: none;
-    color: white;
+.nav__item_social {
+    padding: 48px 0;
+    margin-right: 17px;
 }
 
-.nav__item_social {
-    margin-right: 17px;
+.nav__link {
+    display: inline-block;
+    padding: 45px 0;
+    margin: 0 25px;
+    text-decoration: none;
+    color: white;
+    border-top: 3px solid transparent;
+}
+
+.nav__link:hover {
+    border-top-color: white;
+    text-decoration: underline;
 }
 
 .nav__link_social {
@@ -142,7 +149,7 @@ a:hover {
     padding-left: 300px;
     padding-right: 300px;
     padding-top: 72px;
-    background: url("../src/bg/bg_promo.jpg") center center no-repeat;
+    background: url("../src/bg/bg_promo.jpg") center center no-repeat #434247;
 }
 
 .promo__heading {
@@ -377,6 +384,7 @@ a:hover {
     padding: 100px 215px 103px;
     background: url("../src/bg/bg__patterned_1.jpg");
 }
+
 .reservations__content {
     display: grid;
     grid-template-rows: 52px 49px 82px 75px auto;
