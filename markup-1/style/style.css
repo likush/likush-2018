@@ -3,6 +3,10 @@ html, body, .container {
     height: 100%;
 }
 
+body {
+    background: url("../src/bg/bg__patterned_1.jpg") repeat;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -277,9 +281,7 @@ h1, h2, h3, p, figure {
 
 /*menu section*/
 .menu {
-    padding: 100px 0 34px;
-    height: 994px;
-    box-sizing: border-box;
+    padding: 100px 0 38px;
     background: url("../src/bg/bg__patterned_2.jpg");
 }
 
@@ -305,8 +307,6 @@ h1, h2, h3, p, figure {
 
 .menu__item {
     margin-bottom: 33px;
-    height: 65px;
-    overflow: hidden;
 }
 
 .menu__item_special {
