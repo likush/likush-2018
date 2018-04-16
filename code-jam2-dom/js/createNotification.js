@@ -1,13 +1,4 @@
-(function () {
-    const tips = [
-        '1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum itaque iure minus modi sit? Dolorum, eveniet id incidunt inventore modi nemo non officiis pariatur saepe ullam. Dicta dolore doloribus perspiciatis?',
-        '2. Earum itaque iure minus modi sit? Dolorum, eveniet id incidunt inventore modi nemo non officiis pariatur saepe ullam. Dicta dolore doloribus perspiciatis?',
-        '3. Dolorum, eveniet id incidunt inventore modi nemo non officiis pariatur saepe ullam. Dicta dolore doloribus perspiciatis?',
-        '4. Dicta dolore doloribus perspiciatis?',
-        '5. Earum itaque iure minus modi sit? Dolorum, eveniet id incidunt inventore modi nemo non officiis pariatur saepe ullam. Dicta dolore doloribus perspiciatis?',
-        '6. Dolorum, eveniet id incidunt inventore modi nemo non officiis pariatur saepe ullam. Dicta dolore doloribus perspiciatis?'
-    ];
-
+function createNotification(tips) {
     const modalEl = document.querySelector('.modal');
     const modalContentEl = document.querySelector('.modal__content');
     const closeBtnEl = document.querySelector('.modal__btn_close');
@@ -30,12 +21,28 @@
         indicatorTemplate.classList.add('indicators__item_active');
 
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') hideModal()
+            switch (e.key) {
+                case 'Escape':
+                    hideModal();
+                    break;
+                case 'ArrowLeft':
+                    switchTip('prev');
+                    break;
+                case 'ArrowRight':
+                    switchTip('next');
+                    break;
+            }
         });
 
         closeBtnEl.addEventListener('click', hideModal);
         checkboxEl.addEventListener('change', saveVisibilityState);
-        modalEl.addEventListener('click', switchTip);
+        modalEl.addEventListener('click', function (e) {
+            if (e.target.matches('.carousel__btn_next')) {
+                switchTip('next');
+            } else if (e.target.matches('.carousel__btn_prev')) {
+                switchTip('prev');
+            }
+        });
 
         showModal()
     }
@@ -55,17 +62,15 @@
 
     let currentIndex = 0;
 
-    function switchTip(e) {
-        if (!e.target.matches('.carousel__btn')) return;
-
+    function switchTip(direction) {
         const indicators = document.querySelectorAll('.indicators__item');
         indicators[currentIndex].classList.remove('indicators__item_active');
-        if (e.target.matches('.carousel__btn_next')) {
+        if (direction === 'next') {
             currentIndex = currentIndex === tips.length - 1 ? 0 : currentIndex + 1;
-        } else if (e.target.matches('.carousel__btn_prev')) {
+        } else if (direction === 'prev') {
             currentIndex = currentIndex === 0 ? tips.length - 1 : currentIndex - 1
         }
         indicators[currentIndex].classList.add('indicators__item_active');
         modalContentEl.innerHTML = tips[currentIndex];
     }
-})();
+}
