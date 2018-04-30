@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Montserrat');
+
+body {
+    /* height: 100vh; */
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Amatic SC', cursive;
+    font-size: 14px;
+    background: url("../img/page-bg.png");
+}
+
+.btn, .play__options-timer, .registration-form__input {
+    outline: 0;
+    cursor: pointer;
+    border: none;
+    color: #ffffff;
+    border-radius: 10px;
+    opacity: .8;
+}
+
+.btn_outline {
+    opacity: 1;
+    background-color: transparent;
+    border: 1px solid #a794b0;
+    color: #a794b0;
+}
+
+.btn:hover, .btn:focus, .play__options-timer:hover {
+    opacity: 1;
+}
+
+.card {
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.33s, opacity 0.33s linear;
+}
+
+.visible {
+    animation-name: show-block;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    transition-timing-function: ease;
+}
+
+@keyframes show-block {
+    0% {
+        left: -100px;
+    }
+    100% {
+        left: -200px
+    }
+}
+
+/*index*/
+.heading {
+    font-weight: 400;
+    font-size: 3rem;
+    margin: 0 0 30px;
+    color: #9bc390;
+}
+
+.heading_inverted {
+    color: #ffffff;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 420px auto;
+    padding: 0 100px;
+    height: 100vh;
+
+}
+
+.about-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px;
+    background-color: #9cc491;
+    color: #ffffff;
+}
+
+.description {
+    margin-bottom: 80px;
+}
+
+.description__heading {
+    font-size: 4rem;
+}
+
+.description__text {
+    margin: 0 0 10px;
+}
+
+.description__text, .rules__list, .copyright {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.rules__list {
+    margin: 0;
+    padding-left: 15px;
+}
+
+.rules__item {
+    margin-bottom: 15px;
+}
+
+.rules__item:last-child {
+    margin-bottom: 0;
+}
+
+.game-options {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
+
+.card-shirts {
+    margin-bottom: 90px;
+}
+
+.card-shirts__wrapper {
+    display: flex;
+}
+
+.shirt {
+    margin-right: 45px;
+    width: 150px;
+    height: 150px;
+    background-color: #f0f0f0;
+    box-shadow: 0 3px 10px rgba(78, 87, 87, 0.5);
+}
+
+.shirt:hover {
+    box-shadow: 0 3px 15px rgba(78, 87, 87, .7);
+}
+
+.shirt:last-child {
+    margin-right: 0;
+}
+
+.shirt__geometric {
+    background-image: url("../img/cards-bg/1.png");
+}
+
+.shirt__dotted {
+    background-image: url("../img/cards-bg/2.png");
+}
+
+.shirt__tissue {
+    background-image: url("../img/cards-bg/3.png");
+}
+
+.shirt:last-child {
+    margin-right: 0;
+}
+
+.difficulty {
+    margin-bottom: 90px;
+}
+
+.difficulty-btn-group {
+    display: flex;
+    justify-content: center;
+}
+
+.difficulty__btn {
+    padding: 5px 25px;
+    margin-right: 20px;
+    border-radius: 5px;
+    font-size: 2rem;
+}
+
+.difficulty__btn:hover {
+    background-color: #a794b0;
+    color: #ffffff;
+}
+
+.difficulty__btn:last-child {
+    margin-right: 0;
+}
+
+.start-game__btn {
+    background-color: #e46e75;
+    color: white;
+    font-size: 3rem;
+    width: 280px;
+    height: 90px;
+}
+
+/*game-field*/
+.cards {
+    display: grid;
+     height: 100vh;
+    grid-template: repeat(3, 150px) / repeat(5, 150px);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 40px 41px;
+}
+
+.card__item {
+    margin: auto;
+    perspective: 1000px;
+}
+
+.card__img {
+    width: 120px;
+    height: 120px;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.card__item,
+.card__front,
+.card__back {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.card__flipper {
+    transition: 1s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.card__front,
+.card__back {
+    backface-visibility: hidden;
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 15px rgba(78, 87, 87, .7);
+}
+
+.card__back {
+    background-color: #ffffff;
+    z-index: 5;
+    transform: rotateY(180deg);
+}
+
+.card__back-img {
+    width: 120px;
+    height: 120px;
+}
+
+.card__front {
+    background: url("../img/cards-bg/1.png") #f0f0f0;
+
+}
+
+.play__options {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.play__options-btn,
+.play__options-timer {
+    display: block;
+    margin-bottom: 15px;
+    width: 135px;
+    height: 45px;
+    background: #9CC491;
+    font-size: 1.5rem;
+}
+
+.play__options-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play__options-btn_new-game {
+    background-color: #e46e75;
+}
+
+.copyright {
+    position: absolute;
+    bottom: 10px;
+    right: 35px;
+    color: #8bb080;
+}
+
+.copyright__link {
+    color: #e46e75;
+}
+
+.copyright__link:not(:hover) {
+    text-decoration: none;
+}
+
+/*registration form*/
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.registration-form__item {
+    display: grid;
+    grid-template-columns: 90px 200px;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    color: #a794b0;
+}
+
+.registration-form__input {
+    padding: 5px 10px;
+    width: 200px;
+    height: 30px;
+    font-size: 1.5rem;
+    border: 1px solid #8bb080;
+    border-radius: 5px;
+    background-color: transparent;
+    opacity: 1;
+    font-family: 'Amatic SC', cursive;
+    color: #a794b0;
+}
+
+.btn__form {
+    font-family: 'Amatic SC', cursive;
+    background-color: #e46e75;
+    font-size: 2rem;
+    padding: 5px 30px;
+}
+
