@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Montserrat');
 
 body {
-    /* height: 100vh; */
     box-sizing: border-box;
     margin: 0;
     font-family: 'Amatic SC', cursive;
@@ -196,7 +195,7 @@ body {
 /*game-field*/
 .cards {
     display: grid;
-     height: 100vh;
+    height: 100vh;
     grid-template: repeat(3, 150px) / repeat(5, 150px);
     justify-content: center;
     align-content: center;
@@ -255,8 +254,7 @@ body {
 }
 
 .card__front {
-    background: url("../img/cards-bg/1.png") #f0f0f0;
-
+    background-color: #f0f0f0;
 }
 
 .play__options {
