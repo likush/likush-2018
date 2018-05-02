@@ -83,6 +83,7 @@ function startTimer () {
         if (matchedCardCount === cardCount) {
             clearInterval(intervalId)
             showCongratulations(time)
+            saveRecords(loadProfile(), time)
         }
     }, 1000)
 }

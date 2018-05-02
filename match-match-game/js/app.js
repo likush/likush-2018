@@ -22,3 +22,8 @@ function loadProfile () {
 function saveProfile (profile) {
     localStorage.setItem('game-profile', JSON.stringify(profile))
 }
+
+function saveRecords (profile, time) {
+    const records = JSON.parse(localStorage.getItem('records')) || []
+    localStorage.setItem('records', JSON.stringify(records.concat({profile: profile, time: time})))
+}
