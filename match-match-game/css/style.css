@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Montserrat');
 
+html, body {
+    height: 100%;
+}
+
 body {
     box-sizing: border-box;
     margin: 0;
     font-family: 'Amatic SC', cursive;
     font-size: 14px;
     background: url("../img/page-bg.png");
+}
+
+p {
+    margin: 0;
 }
 
 .btn, .play__options-timer, .registration-form__input {
@@ -26,11 +34,6 @@ body {
 
 .btn:hover, .btn:focus, .play__options-timer:hover {
     opacity: 1;
-}
-
-.card {
-    border-radius: 20px;
-    cursor: pointer;
 }
 
 .hidden {
@@ -59,7 +62,7 @@ body {
 .heading {
     font-weight: 400;
     font-size: 3rem;
-    margin: 0 0 30px;
+    margin: 0 0 25px;
     color: #9bc390;
 }
 
@@ -120,19 +123,22 @@ body {
 }
 
 .card-shirts {
-    margin-bottom: 90px;
+    margin-bottom: 80px;
 }
 
 .card-shirts__wrapper {
     display: flex;
+    justify-content: center;
 }
 
 .shirt {
     margin-right: 45px;
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     background-color: #f0f0f0;
+    border-radius: 10px;
     box-shadow: 0 3px 10px rgba(78, 87, 87, 0.5);
+    cursor: pointer;
 }
 
 .shirt:hover {
@@ -143,24 +149,25 @@ body {
     margin-right: 0;
 }
 
-.shirt__geometric {
+.shirt_selected,
+.shirt_selected:hover {
+    box-shadow: 0 3px 25px #796284;
+}
+
+.shirt_geometric {
     background-image: url("../img/cards-bg/1.png");
 }
 
-.shirt__dotted {
+.shirt_dotted {
     background-image: url("../img/cards-bg/2.png");
 }
 
-.shirt__tissue {
+.shirt_tissue {
     background-image: url("../img/cards-bg/3.png");
 }
 
-.shirt:last-child {
-    margin-right: 0;
-}
-
 .difficulty {
-    margin-bottom: 90px;
+    margin-bottom: 80px;
 }
 
 .difficulty-btn-group {
@@ -176,6 +183,12 @@ body {
 }
 
 .difficulty__btn:hover {
+    background-color: rgba(167, 148, 176, .5);
+    color: #ffffff;
+}
+
+.difficulty__btn_selected,
+.difficulty__btn_selected:hover {
     background-color: #a794b0;
     color: #ffffff;
 }
@@ -193,17 +206,23 @@ body {
 }
 
 /*game-field*/
+.play-field {
+    height: 100%;
+}
+
 .cards {
-    display: grid;
-    height: 100vh;
-    grid-template: repeat(3, 150px) / repeat(5, 150px);
+    display: flex;
+    max-width: 750px;
+    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    grid-gap: 40px 41px;
+    align-items: center;
+    margin: auto;
+    height: 100%;
 }
 
 .card__item {
-    margin: auto;
+    margin: 15px;
     perspective: 1000px;
 }
 
@@ -222,6 +241,7 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .card__flipper {
@@ -239,6 +259,11 @@ body {
     left: 0;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 3px 15px rgba(78, 87, 87, .5);
+}
+
+.card__front:hover,
+.card__back:hover {
     box-shadow: 0 3px 15px rgba(78, 87, 87, .7);
 }
 
@@ -301,23 +326,23 @@ body {
 /*registration form*/
 .registration-form {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
+    margin-bottom: 80px;
 }
 
 .registration-form__item {
-    display: grid;
-    grid-template-columns: 90px 200px;
-    align-items: center;
-    margin-bottom: 30px;
+    margin-right: 30px;
     font-size: 1.5rem;
     color: #a794b0;
 }
 
+.registration-form__item:last-child {
+    margin-right: 0;
+}
+
 .registration-form__input {
     padding: 5px 10px;
-    width: 200px;
+    margin-left: 10px;
+    width: 170px;
     height: 30px;
     font-size: 1.5rem;
     border: 1px solid #8bb080;
@@ -328,10 +353,60 @@ body {
     color: #a794b0;
 }
 
-.btn__form {
-    font-family: 'Amatic SC', cursive;
-    background-color: #e46e75;
-    font-size: 2rem;
-    padding: 5px 30px;
+/*end of game*/
+.end-of-game {
+    text-align: center;
+    font-size: 3rem;
+    color: #e46e75;
 }
 
+.end-of-game__text {
+    margin-bottom: 15px;
+    font-size: 4rem;
+    color: #e46e75;
+}
+
+.end-of-game__result {
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+    color: #9bc390;
+}
+
+.end-of-game__result_time {
+    color: #a794b0;
+}
+
+.end-of-game__btn {
+    background-color: #a794b0;
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    padding: 5px 20px;
+}
+
+/*results table*/
+.game-results {
+    margin: 100px auto;
+    font-size: 2rem;
+    color: #a794b0;
+    border-collapse: collapse;
+}
+
+.game-results__col {
+    width: 140px;
+    padding: 10px 20px;
+    border-left: 1px solid #e46e75;
+    border-right: 1px solid #e46e75;
+    text-align: center;
+}
+
+.game-results__col:first-child {
+    border-left: none;
+}
+
+.game-results__col:last-child {
+    border-right: none;
+}
+
+.game-results__row {
+    border-bottom: 1px solid #e46e75;
+}

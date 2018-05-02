@@ -37,14 +37,22 @@ const cardImages = [
     'plum.png'
 ]
 
+const endOfGameTemplate = `
+    <div class="end-of-game">
+        <p class="end-of-game__text">You are win!</p>
+        <p class="end-of-game__result">Your result is <span class="end-of-game__result_time"></span></p>
+        <button class="btn end-of-game__result">View score</button>
+    </div>
+`
+
 let cardCount
 
-function showGame (difficulty, shirt) {
+function showGame (difficulty = 8, shirt = 'shirt_geometric') {
     document.body.innerHTML = gameTemplate
     cardCount = difficulty
     createCards(difficulty, shirt)
     startTimer()
-    document.addEventListener('click', flipCard)
+    document.querySelector('.play-field').addEventListener('click', flipCard)
 }
 
 function createCards (cardCount, shirt) {
@@ -64,7 +72,6 @@ function createCards (cardCount, shirt) {
         .join('')
 }
 
-let gameTime
 let matchedCardCount = 0
 
 function startTimer () {
@@ -76,7 +83,7 @@ function startTimer () {
         timerEl.innerHTML = time
         if (matchedCardCount === cardCount) {
             clearInterval(intervalId)
-            gameTime = time
+            window.gameTime = time
         }
     }, 1000)
 }
