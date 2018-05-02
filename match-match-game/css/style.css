@@ -324,8 +324,8 @@ p {
 }
 
 /*registration form*/
-.registration-form {
-    display: flex;
+.registration-form__fieldset {
+    border: none;
     margin-bottom: 80px;
 }
 
@@ -374,13 +374,6 @@ p {
 
 .end-of-game__result_time {
     color: #a794b0;
-}
-
-.end-of-game__btn {
-    background-color: #a794b0;
-    font-family: 'Amatic SC', cursive;
-    font-size: 2rem;
-    padding: 5px 20px;
 }
 
 /*results table*/

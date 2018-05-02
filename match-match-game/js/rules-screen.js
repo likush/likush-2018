@@ -36,45 +36,34 @@ const rulesTemplate = `
         </div>
         
         <form class="registration-form">
-            <label class="registration-form__item">
-                First name
-                <input class="registration-form__input" type="text" required>
-            </label>
-            <label class="registration-form__item">
-                Last name
-                <input class="registration-form__input" type="text" required>
-            </label>
-            <label class="registration-form__item">
-                Email
-                <input class="registration-form__input" type="email" required>
-            </label>
+            <fieldset class="registration-form__fieldset">
+                <label class="registration-form__item">
+                    First name
+                    <input class="registration-form__input" type="text" required name="first-name" value="{first-name}">
+                </label>
+                <label class="registration-form__item">
+                    Last name
+                    <input class="registration-form__input" type="text" required name="last-name" value="{last-name}">
+                </label>
+                <label class="registration-form__item">
+                    Email
+                    <input class="registration-form__input" type="email" required name="email" value="{email}">
+                </label>
+            </fieldset>
+            <button class="btn start-game__btn">Start game</button>
         </form>
-        <button class="btn start-game__btn">Start game</button>
     </section>
 </main>
 `
 
-const registrationTemplate = `
-<form class="registration-form">
-    <label class="registration-form__item">
-        First name
-        <input class="registration-form__input" type="text" required>
-    </label>
-    <label class="registration-form__item">
-        Last name
-        <input class="registration-form__input" type="text" required>
-    </label>
-    <label class="registration-form__item">
-        Email
-        <input class="registration-form__input" type="email" required>
-    </label>
+function showRules (profile) {
+    profile = profile || {}
 
-    <button class="btn btn__form">Submit</button>
-</form>
-`
-
-function showRules () {
     document.body.innerHTML = rulesTemplate
+        .replace('{first-name}', profile['first-name'])
+        .replace('{last-name}', profile['last-name'])
+        .replace('{email}', profile.email)
+
     document.querySelector('.card-shirts__wrapper').addEventListener('click', selectShirt)
     document.querySelector('.difficulty-btn-group').addEventListener('click', selectDifficulty)
 }

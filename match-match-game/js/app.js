@@ -1,9 +1,24 @@
-showRules()
+showRules(loadProfile())
+
+document.querySelector('.registration-form').addEventListener('submit', function (ev) {
+    showGame(window.difficulty, window.shirt)
+    const profile = {}
+    new FormData(ev.target).forEach((value, name) => {
+        profile[name] = value
+    })
+    saveProfile(profile)
+})
 
 document.addEventListener('click', function (ev) {
-    if (ev.target.matches('.start-game__btn')) {
-        showGame(window.difficulty, window.shirt)
-    } else if (ev.target.matches('.play__options-btn_new-game')) {
+    if (ev.target.matches('.play__options-btn_new-game')) {
         showRules()
     }
 })
+
+function loadProfile () {
+    return JSON.parse(localStorage.getItem('game-profile'))
+}
+
+function saveProfile (profile) {
+    localStorage.setItem('game-profile', JSON.stringify(profile))
+}

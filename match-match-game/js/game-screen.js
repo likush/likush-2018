@@ -24,6 +24,13 @@ const cardTemplate = `
     </div>
 `
 
+const endOfGameTemplate = `
+    <div class="end-of-game">
+        <p class="end-of-game__text">You are win!</p>
+        <p class="end-of-game__result">Your result is <span class="end-of-game__result_time">{game-time}</span></p>
+    </div>
+`
+
 const cardImages = [
     'apple.png',
     'apricot.png',
@@ -36,14 +43,6 @@ const cardImages = [
     'pitaya.png',
     'plum.png'
 ]
-
-const endOfGameTemplate = `
-    <div class="end-of-game">
-        <p class="end-of-game__text">You are win!</p>
-        <p class="end-of-game__result">Your result is <span class="end-of-game__result_time"></span></p>
-        <button class="btn end-of-game__result">View score</button>
-    </div>
-`
 
 let cardCount
 
@@ -83,9 +82,14 @@ function startTimer () {
         timerEl.innerHTML = time
         if (matchedCardCount === cardCount) {
             clearInterval(intervalId)
-            window.gameTime = time
+            showCongratulations(time)
         }
     }, 1000)
+}
+
+function showCongratulations (time) {
+    document.querySelector('.cards').innerHTML = endOfGameTemplate
+        .replace('{game-time}', time)
 }
 
 let openedCard
