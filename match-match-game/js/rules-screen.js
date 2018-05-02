@@ -60,9 +60,9 @@ function showRules (profile) {
     profile = profile || {}
 
     document.body.innerHTML = rulesTemplate
-        .replace('{first-name}', profile['first-name'])
-        .replace('{last-name}', profile['last-name'])
-        .replace('{email}', profile.email)
+        .replace('{first-name}', profile['first-name'] || '')
+        .replace('{last-name}', profile['last-name'] || '')
+        .replace('{email}', profile.email || '')
 
     document.querySelector('.card-shirts__wrapper').addEventListener('click', selectShirt)
     document.querySelector('.difficulty-btn-group').addEventListener('click', selectDifficulty)
