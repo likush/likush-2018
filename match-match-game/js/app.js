@@ -1,12 +1,15 @@
 showRules(loadProfile())
 
-document.querySelector('.registration-form').addEventListener('submit', function (ev) {
-    showGame(window.difficulty, window.shirt)
-    const profile = {}
-    new FormData(ev.target).forEach((value, name) => {
-        profile[name] = value
-    })
-    saveProfile(profile)
+document.addEventListener('submit', function (ev) {
+    if (ev.target.matches('.registration-form')) {
+        ev.preventDefault()
+        showGame(window.difficulty, window.shirt)
+        const profile = {}
+        new FormData(ev.target).forEach((value, name) => {
+            profile[name] = value
+        })
+        saveProfile(profile)
+    }
 })
 
 document.addEventListener('click', function (ev) {
