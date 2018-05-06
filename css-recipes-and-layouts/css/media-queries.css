@@ -1,0 +1,142 @@
+@media (max-width: 1023px) {
+    .s-visible {
+        display: block;
+    }
+
+    .s-hidden {
+        display: none;
+    }
+
+    .container {
+        grid-template-columns: 780px;
+        grid-auto-rows: auto;
+        grid-template-areas: "hidden-elements" "tags" "content";
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .navbar {
+        justify-content: space-between;
+        padding: 0;
+        align-items: center;
+    }
+
+    .articles {
+        box-sizing: border-box;
+        padding: 0 65px;
+    }
+
+    .information__item_about,
+    .information__item_info {
+        grid-area: hidden-elements;
+        padding: 20px 20px 0;
+    }
+
+    .information__item_tags {
+        padding: 0 65px;
+        margin-bottom: 0;
+    }
+
+    .tags__wrapper {
+        justify-content: center;
+    }
+
+    .article__social {
+        right: 0;
+        position: absolute;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .article__social-item {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .xs-visible {
+        display: block;
+    }
+
+    .xs-hidden {
+        display: none;
+    }
+
+    .container {
+        grid-template-columns: 320px;
+        grid-template-areas: "hidden-elements" "content";
+    }
+
+    .information__item_tags {
+        grid-area: hidden-elements;
+    }
+
+    .logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .main__heading {
+        font-size: 1rem;
+    }
+
+    .navbar {
+        padding: 2px;
+        border: none;
+    }
+
+    .navbar__collapsed-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .navbar__collapsed-btn_about {
+        background-position: 10px;
+    }
+
+    .navbar__collapsed-btn_info {
+        background-position: -37px;
+    }
+
+    .navbar__collapsed-btn_tags {
+        background-position: -89px;
+    }
+
+    .navbar__collapsed-btn_nav {
+        background-position: -147px 9px;
+    }
+
+    .articles {
+        padding: 0 15px;
+    }
+
+    .article__heading {
+        text-align: center;
+        background-color: #f4f5f6;
+        border-bottom: none;
+        font-size: 1rem;
+    }
+
+    .article {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: "img" "heading" "article-info" "text" "social"
+    }
+
+    .article__social {
+        position: static;
+        flex-direction: row;
+    }
+
+    .article__social-item {
+        margin-bottom: 0;
+    }
+
+    .tags__wrapper {}
+}
+
+
+
