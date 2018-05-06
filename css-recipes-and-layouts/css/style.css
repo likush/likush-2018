@@ -43,6 +43,7 @@ h1, h2, h3, p {
 
 /*header*/
 .header {
+    position: relative;
     grid-area: header;
     padding: 10px 0;
 }
@@ -320,4 +321,8 @@ h1, h2, h3, p {
 .s-visible,
 .xs-visible {
     display: none;
+}
+
+.visible {
+    display: block;
 }

@@ -14,6 +14,9 @@
     </header>
     <nav class="navbar">
         <button class="btn navbar__collapsed-btn navbar__collapsed-btn_about s-visible" data-content="about"></button>
+        <button class="btn navbar__collapsed-btn navbar__collapsed-btn_info s-visible" data-content="info"></button>
+        <button class="btn navbar__collapsed-btn navbar__collapsed-btn_tags xs-visible" data-content="tags"></button>
+        <button class="btn navbar__collapsed-btn navbar__collapsed-btn_inverted navbar__collapsed-btn_nav xs-visible"></button>
         <ul class="list navbar__nav-list xs-hidden">
             <li class="navbar__nav-item"><a class="navbar__nav-link" href="#">JavaScript</a></li>
             <li class="navbar__nav-item"><a class="navbar__nav-link" href="#">CSS</a></li>
@@ -21,10 +24,6 @@
             <li class="navbar__nav-item"><a class="navbar__nav-link" href="#">HTML</a></li>
             <li class="navbar__nav-item"><a class="navbar__nav-link" href="#">Design</a></li>
         </ul>
-        <button class="btn navbar__collapsed-btn navbar__collapsed-btn_info s-visible" data-content="info"></button>
-        <button class="btn navbar__collapsed-btn navbar__collapsed-btn_tags xs-visible" data-content="tags"></button>
-        <button class="btn navbar__collapsed-btn navbar__collapsed-btn_inverted navbar__collapsed-btn_nav xs-visible"
-                data-content="nav"></button>
     </nav>
     <main class="container">
         <section class="articles">
@@ -118,16 +117,13 @@
                 <div class="information__icon information__icon_info"></div>
                 <h3 class="information__item-heading">Some info</h3>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum
+                deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate
+                non-provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum
+                fuga.
             </p>
         </div>
-        <div class="s-hidden information__item information__item_tags" data-content="tags">
+        <div class="xs-hidden information__item_tags" data-content="tags">
             <div class="tags__wrapper">
                 <div class="tag__item">
                     <div class="tag__item_square">

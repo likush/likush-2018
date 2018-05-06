@@ -30,6 +30,11 @@
     .information__item_info {
         grid-area: hidden-elements;
         padding: 20px 20px 0;
+        margin-bottom: 0;
+    }
+
+    .navbar__collapsed-btn_info {
+        order: 10;
     }
 
     .information__item_tags {
@@ -53,6 +58,10 @@
         margin-right: 0;
     }
 
+    .visible {
+        display: block;
+    }
+
 }
 
 @media (max-width: 767px) {
@@ -65,8 +74,10 @@
     }
 
     .container {
-        grid-template-columns: 320px;
+        max-width: 767px;
+        grid-template-columns: auto;
         grid-template-areas: "hidden-elements" "content";
+        grid-gap: 20px;
     }
 
     .information__item_tags {
@@ -83,13 +94,24 @@
     }
 
     .navbar {
+        position: relative;
         padding: 2px;
+        justify-content: flex-start;
         border: none;
     }
 
     .navbar__collapsed-btn {
         width: 30px;
         height: 30px;
+        margin-right: 2px;
+    }
+
+    .navbar__collapsed-btn:last-child {
+        margin-right: 0;
+    }
+
+    .navbar__collapsed-btn_info {
+        order: 0;
     }
 
     .navbar__collapsed-btn_about {
@@ -106,6 +128,37 @@
 
     .navbar__collapsed-btn_nav {
         background-position: -147px 9px;
+        margin-left: auto;
+    }
+
+    .navbar__collapsed-btn_nav:hover + .navbar__nav-list {
+        display: block;
+    }
+
+    .navbar__nav-list:hover {
+        display: block;
+    }
+
+    .navbar__nav-list {
+        position: absolute;
+        top: 34px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-left: -2px;
+        padding: 10px 20px;
+        z-index: 10;
+    }
+
+    .navbar__nav-item {
+        margin-bottom: 10px;
+    }
+
+    .navbar__nav-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .navbar__nav-link {
+        font-size: .8rem;
     }
 
     .articles {
@@ -129,13 +182,17 @@
     .article__social {
         position: static;
         flex-direction: row;
+        padding-top: 15px;
     }
 
     .article__social-item {
         margin-bottom: 0;
     }
 
-    .tags__wrapper {}
+    .visible {
+        display: block;
+        padding: 15px 10px 0;
+    }
 }
 
 
