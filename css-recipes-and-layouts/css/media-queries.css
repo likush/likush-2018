@@ -33,6 +33,10 @@
         margin-bottom: 0;
     }
 
+    .navbar__nav-item {
+        padding: 17px 0;
+    }
+
     .navbar__collapsed-btn_info {
         order: 10;
     }
@@ -98,6 +102,10 @@
         padding: 2px;
         justify-content: flex-start;
         border: none;
+    }
+
+    .navbar__nav-item {
+        padding: 0;
     }
 
     .navbar__collapsed-btn {

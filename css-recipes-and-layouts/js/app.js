@@ -1,4 +1,4 @@
-let prevEl
+let prevEl, prevMenuEl
 
 function showHiddenContent (ev) {
     const selectedEl = ev.target
@@ -15,6 +15,13 @@ function showHiddenContent (ev) {
 
         }
         prevEl = dataEl
+    } else if (selectedEl.matches('.navbar__nav-link')) {
+        const arrowEl = selectedEl.closest('.navbar__nav-item').querySelector('.arrow')
+        arrowEl.classList.add('visible')
+        if (prevMenuEl && prevMenuEl !== arrowEl) {
+            prevMenuEl.classList.remove('visible')
+        }
+        prevMenuEl = arrowEl
     }
 }
 

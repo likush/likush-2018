@@ -63,7 +63,7 @@ h1, h2, h3, p {
     grid-area: navbar;
     display: flex;
     justify-content: center;
-    padding: 15px;
+    padding: 0 15px;
     border-bottom: 3px solid #c6defa;
     background-color: #6794b7;
 }
@@ -72,8 +72,14 @@ h1, h2, h3, p {
     width: 600px;
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
     background-color: #6794b7;
+}
+
+.navbar__nav-item {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar__nav-link {
@@ -81,6 +87,26 @@ h1, h2, h3, p {
     font-size: 1.2rem;
     color: white;
     text-transform: uppercase;
+}
+
+.arrow {
+    position: absolute;
+    bottom: -10px;
+    display: none;
+    width: 0;
+    border-left: 11px solid transparent;
+    border-right: 11px solid transparent;
+    border-top: 10px solid #c6defa;
+}
+
+.arrow:after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -8px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #6794b7;
 }
 
 .navbar__nav-link:not(:hover) {
