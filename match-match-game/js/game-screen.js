@@ -31,6 +31,21 @@ const endOfGameTemplate = `
     </div>
 `
 
+const gameRecordsTemplate = `
+<table class="game-results">
+    <tr class="game-results__row">
+        <th class="game-results__col">Name</th>
+        <th class="game-results__col">Time</th>
+        <th class="game-results__col">Difficulty level</th>
+    </tr>
+    <tr class="game-results__row">
+        <td class="game-results__col game-results__col_name"></td>
+        <td class="game-results__col game-results__col_time"></td>
+        <td class="game-results__col game-results__col_difficulty"></td>
+    </tr>
+</table>
+`
+
 const cardImages = [
     'apple.png',
     'apricot.png',
