@@ -22,17 +22,15 @@
         return CODEJAM_USERS.map(user => {
             const row = createElement('tr')
             row.appendChild(createElement('td', user.displayName))
+
+            let totalTime = 0
             solutions.forEach(solution => {
                 const userSolution = solution[user.uid]
-                let content
-                if (userSolution) {
-                    content = userSolution.time.$numberLong
-                } else {
-                    content = 'incorrect'
-                }
+                const content = userSolution ? userSolution.time.$numberLong : 150
                 row.appendChild(createElement('td', content))
+                totalTime += +content
             })
-            row.appendChild(createElement('td', '1000'))
+            row.appendChild(createElement('td', totalTime))
 
             return row
         })
