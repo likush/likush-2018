@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>CSS Quick Draw Scoreboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<table class="results"></table>
+
+<main>
+    <form class="session_selector">
+        <h2>Select a session:</h2>
+        <label><input type="radio" name="session" value="0" checked> Main session</label>
+        <label><input type="radio" name="session" value="1"> Demo session</label>
+    </form>
+
+    <table class="results"></table>
+</main>
+
 
 <script src="users.js"></script>
 <script src="sessions.js"></script>
