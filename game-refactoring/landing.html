@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chicken fight monsters</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="landing__container">
+    <section class="landing__head">
+        <div class="landing__head-content">
+            <h1 class="landing__heading landing__head-heading">Chicken fight monsters</h1>
+            <p class="landing__head-text">Fight monsters and save the Chicken!</p>
+            <button class="btn btn__start-game">Play game</button>
+        </div>
+        <img class="landing__head-chicken" src="src/player/chicken.png">
+    </section>
+
+    <section class="landing__section landing__about">
+        <h2 class="landing__heading landing__rules-heading">About game</h2>
+        <div class="landing__section-text">
+            This is a game for children 4-6 years old. Here you will find several types of tasks: mathematical,
+            linguistic, listening and others.
+            The child chooses the type of spell, gets the question, and if answer is correct - spell applies.
+            And Chicken gets closer to winning!
+        </div>
+    </section>
+
+    <section class="landing__section landing__rules">
+        <h2 class="landing__heading">Game rules</h2>
+        <ol class="landing__section-text">
+            <li>The player chooses the spell first (attack ot heal).</li>
+            <li>The player proceeds to the task screen. If answer is correct - spell applies.</li>
+            <li>The monster applies a spell after player's mistake.</li>
+            <li>If the player wins - the battle with the next monster. If you lose - shows a table of records, with the
+                number of defeated monsters and the name of the hero.
+            </li>
+        </ol>
+    </section>
+
+    <section class="landing__section landing__screens">
+        <h2 class="landing__heading landing__screens-heading">Game screens</h2>
+        <div class="landing__screens-wrapper">
+            <img src="src/screens/screen_task.png" alt="screen" class="landing__screens-item">
+            <img src="src/screens/screen_game.jpg" alt="screen" class="landing__screens-item">
+            <img src="src/screens/screen_task_2.jpg" alt="screen" class="landing__screens-item">
+        </div>
+
+    </section>
+
+    <section class="landing__section landing__author">
+        <p>Design and development by <a class="landing__link" href="https://github.com/likush/">Liliya Kushnariova</a>
+        </p>
+    </section>
+</main>
+
+<script>
+    document.querySelector('.btn__start-game')
+        .addEventListener('click', function () {
+            document.location = 'index.html'
+        })
+</script>
+</body>
+</html>

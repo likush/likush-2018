@@ -1,0 +1,519 @@
+@font-face {
+    font-family: Mostly Mono;
+    src: url("../src/font/MostlyMono.ttf");
+}
+
+/*general styles*/
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Mostly Mono", sans-serif;
+}
+
+.btn {
+    width: 150px;
+    height: 40px;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    line-height: .7;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: 0;
+}
+
+.container {
+    height: 100vh;
+    background: #93d6ff url("../src/bg/bg_game.jpg") repeat no-repeat center bottom;
+}
+
+h1, h2, p, button, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+/*main*/
+.main {
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 30px;
+}
+
+.actions {
+    position: absolute;
+    bottom: 45px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 50px;
+}
+
+.action__btn {
+    margin-right: 30px;
+    background-color: #88446f;
+}
+
+.action__btn:last-child {
+    margin: 0;
+}
+
+.action__btn:hover {
+    background-color: #773c61;
+}
+
+.action__btn_new-game {
+    position: absolute;
+    left: 50px;
+    background-color: #96be4b;
+}
+
+.action__btn_new-game:hover {
+    background-color: #83a93d;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__input {
+    padding: 5px 10px;
+    margin-bottom: 30px;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+    background-color: #fdfdfd;
+    color: #ca525c;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.form__input:focus {
+    outline-color: #96be4b;
+}
+
+.form__btn {
+    background-color: #ff8087;
+    font-size: 2rem;
+    height: 50px;
+}
+
+.form__btn:hover {
+    background-color: #e6646e;
+}
+
+/*modal*/
+.modal {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 700px;
+    height: 400px;
+    border-radius: 15px;
+    background-color: #f7f7f7;
+    font-size: 3rem;
+    color: #ca525c;
+    text-align: center;
+}
+
+.modal__heading {
+    margin-bottom: 30px;
+    color: #804169;
+    font-size: 2rem;
+    font-weight: 100;
+}
+
+.modal__task {
+    margin-bottom: 25px;
+    font-size: 2rem;
+    color: #478356;
+}
+
+.form__task {
+    align-items: center;
+}
+
+.modal__input {
+    width: 250px;
+}
+
+.modal__btn_close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    font-size: 2rem;
+    line-height: .5;
+    background: transparent;
+    color: #804169;
+}
+
+.modal__btn_close:hover {
+    font-weight: bold;
+}
+
+/*health bar*/
+.health-bar_wrapper {
+    width: 300px;
+    overflow-wrap: break-word;
+    text-align: center;
+    color: white;
+}
+
+.health-bar__group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.health-bar {
+    position: relative;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #ebebeb;
+    border: 1px solid #e6646e;
+    color: #fff;
+    text-align: center;
+}
+
+.health-bar__inner {
+    height: 100%;
+    background-color: #fbacac;
+}
+
+.health-bar__name {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.health-bar__value {
+    position: absolute;
+    top: 7px;
+    left: 50%;
+}
+
+/*heroes*/
+.heroes__wrapper {
+    display: flex;
+    position: absolute;
+    bottom: 190px;
+    justify-content: center;
+    width: 100%;
+}
+
+.heroes {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-width: 700px;
+}
+
+/*player*/
+.player {
+    z-index: 10;
+}
+
+.player__img {
+    position: relative;
+    height: 130px;
+}
+
+/*monster*/
+.monster {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.monster__body {
+    position: relative;
+    top: 5px;
+    height: 130px;
+}
+
+.monster__legs {
+    height: 40px;
+}
+
+.monster__weapon {
+    position: absolute;
+    bottom: 40px;
+    right: -40px;
+    height: 70px;
+}
+
+/*show hp*/
+.visible-change-hp {
+    display: none;
+    position: relative;
+    bottom: 50px;
+    animation: showDamage 1s alternate;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ca525c;
+    text-align: center;
+}
+
+@keyframes showDamage {
+    0% {
+        bottom: -100px;
+
+    }
+    100% {
+        bottom: 50px;
+    }
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+/*landing page*/
+.landing__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.8rem;
+    line-height: 1.3;
+    padding: 50px 0;
+    color: #773c61;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+}
+
+.landing__section:last-child {
+    padding-bottom: 30px;
+}
+
+.landing__head {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: url("../src/bg/bg_landing.jpg");
+    background-size: cover;
+}
+
+.landing__head-content {
+    text-align: center;
+    color: #804169;
+}
+
+.landing__head-chicken {
+    position: absolute;
+    bottom: -130px;
+    right: 100px;
+    animation: movingChicken .5s alternate infinite;
+}
+
+@keyframes movingChicken {
+    0% {
+        bottom: -130px;
+    }
+    100% {
+        bottom: -90px;
+    }
+}
+
+.landing__heading {
+    margin-bottom: 20px;
+    font-family: "Mostly Mono", sans-serif;
+    color: #e6646e;
+}
+
+.landing__head-heading {
+    margin-bottom: 25px;
+    font-size: 4rem;
+    color: #773c61;
+}
+
+.landing__head-text {
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.btn__start-game {
+    background-color: #ffa0a0;
+    width: 250px;
+    height: 70px;
+    font-size: 2.5rem;
+}
+
+.btn__start-game:hover {
+    background-color: #afd755;
+}
+
+.landing__about-items {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.landing__section-text {
+    padding: 0 60px;
+    max-width: 1000px;
+}
+
+.landing__link {
+    color: #ca525c;
+}
+
+.landing__link:not(:hover) {
+    text-decoration: none;
+}
+
+.landing__rules {
+    background: url("../src/bg/bg_landing_2.jpg") center;
+}
+
+.landing__screens-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing__screens-item {
+    width: 50%;
+    margin-bottom: 40px;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.landing__screens-item:last-child {
+    margin-bottom: 0;
+}
+
+.landing__screens-item:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 15px rgba(128, 128, 128, .5)
+}
+
+.landing__author {
+    font-size: 1.5rem;
+    text-align: right;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: "Mostly Mono", sans-serif;
+}
+
+/*table results*/
+.game-results {
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    background: url("../src/bg/bg_table-results.png") repeat;
+}
+
+.table-results {
+    font-size: 1.7rem;
+    border-collapse: collapse;
+    color: #ca525c;
+}
+
+.table-results__cell {
+    border: 1px solid #afd755;
+    padding: 15px 30px 0;
+    width: 400px;
+}
+
+.game-results__img {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    animation: movingChicken 1s alternate infinite;
+    font-size: 2rem;
+    color: #804169;
+    font-weight: bold;
+}
+
+.game-results__img-text {
+    margin-bottom: 20px;
+    color: white;
+}
+
+/*registration*/
+.registration__item {
+    font-size: 2rem
+}
+
+.registration__input {
+    width: 200px;
+    margin-left: 30px;
+}
+
+.registration__btn {
+    width: 200px;
+}
+
+/*animation attack*/
+.attack {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.attack__img {
+    position: relative;
+    left: 0;
+    height: 128px;
+    width: 128px;
+    animation: 2s;
+    animation-iteration-count: 1;
+    z-index: 15;
+}
+
+@keyframes playerAttack {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 80%;
+    }
+}
+
+@keyframes monsterAttack {
+    0% {
+        left: 85%;
+        transform: scaleX(-1);
+    }
+    100% {
+        left: 0;
+        transform: scaleX(-1);
+    }
+}
