@@ -1,4 +1,6 @@
-function createPlayer (hp, name) {
+import {createHealthBar} from './createHealthBar.js'
+
+export function createPlayer (hp, name) {
     const playerEl = document.querySelector('.player__wrapper')
     const playerHealthBarEl = createHealthBar('.health-bar_player', 'margin-right: auto', name, hp)
 

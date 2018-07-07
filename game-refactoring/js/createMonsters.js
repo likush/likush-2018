@@ -1,3 +1,5 @@
+import {createHealthBar} from './createHealthBar.js'
+
 const monsterTemplate = `
     <div class="visible-change-hp"></div> 
     <div class="monster">
@@ -12,7 +14,7 @@ const monsterParts = {
     weapon: ['weapon_1.png', 'weapon_2.png', 'weapon_3.png']
 }
 
-function createMonster (hp) {
+export function createMonster (hp) {
     const generatedParts = []
     for (const prop in monsterParts) {
         generatedParts.push(monsterParts[prop][Math.floor(Math.random() * monsterParts[prop].length)])

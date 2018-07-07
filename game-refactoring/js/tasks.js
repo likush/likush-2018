@@ -1,3 +1,5 @@
+import { vocabulary } from './vocabulary.js'
+
 const taskTemplate = `
     <p class="modal__task">{content}</p>
     <form class="form form__task">
@@ -22,16 +24,16 @@ function createMathTask () {
 }
 
 function createTranslateTask () {
-    const keys = Object.keys(window.VOCABULARY)
+    const keys = Object.keys(vocabulary)
     const word = keys[Math.floor(Math.random() * keys.length)]
     return {
         caption: 'Translate the word',
         taskHTML: taskTemplate.replace('{content}', word),
-        checkResult: answer => window.VOCABULARY[word].includes(answer)
+        checkResult: answer => vocabulary[word].includes(answer)
     }
 }
 
-function selectTask () {
+export function selectTask () {
     const tasks = [createMathTask, createTranslateTask]
     const selectedTask = tasks[Math.floor(Math.random() * tasks.length)]
     return selectedTask()

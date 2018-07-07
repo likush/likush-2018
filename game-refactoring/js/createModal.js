@@ -8,7 +8,7 @@ const modalTemplate = `
         {extra}
     </div>`
 
-function createModal (caption, content, extra) {
+export function createModal (caption, content, extra) {
     const modalContainer = document.querySelector('.modal__container')
     modalContainer.innerHTML = modalTemplate
         .replace('{caption}', caption)
@@ -16,6 +16,6 @@ function createModal (caption, content, extra) {
         .replace('{extra}', extra || '')
 }
 
-function hideModal () {
+export function hideModal () {
     document.querySelector('.modal__container').innerHTML = null
 }

@@ -5,7 +5,7 @@ const healthBarTemplate = `
         <div class="health-bar__inner" style="{style}"></div>
     </div>`
 
-function createHealthBar (selector, style, name, hp) {
+export function createHealthBar (selector, style, name, hp) {
     const healthBarEl = document.querySelector(selector)
     healthBarEl.innerHTML = healthBarTemplate
         .replace('{style}', style)
@@ -15,7 +15,7 @@ function createHealthBar (selector, style, name, hp) {
     return healthBarEl
 }
 
-function changeHealthBar (healthBarEl, newHp) {
+export function changeHealthBar (healthBarEl, newHp) {
     healthBarEl.querySelector('.health-bar__inner').style.setProperty('width', newHp + '%')
     healthBarEl.querySelector('.health-bar__value').innerHTML = newHp
 }
