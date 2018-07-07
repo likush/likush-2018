@@ -1,12 +1,13 @@
 @font-face {
     font-family: Mostly Mono;
-    src: url("../src/font/MostlyMono.ttf");
+    src: url("../font/MostlyMono.ttf");
 }
 
 body {
     padding: 0;
     margin: 0;
     font-family: "Mostly Mono", sans-serif;
+    font-size: 2rem;
 }
 
 .btn {
@@ -46,7 +47,7 @@ body {
     position: relative;
     height: 100vh;
     overflow: hidden;
-    background: url("../src/bg/bg_landing.jpg");
+    background: url("../assets/bg/bg_landing.jpg");
     background-size: cover;
 }
 
@@ -84,18 +85,17 @@ body {
 }
 
 .landing__head-text {
-    font-size: 2rem;
     margin-bottom: 25px;
 }
 
-.btn__start-game {
+.btn_start-game {
     background-color: #ffa0a0;
     width: 250px;
     height: 70px;
     font-size: 2.5rem;
 }
 
-.btn__start-game:hover {
+.btn_start-game:hover {
     background-color: #afd755;
 }
 
@@ -119,7 +119,7 @@ body {
 }
 
 .landing__rules {
-    background: url("../src/bg/bg_landing_2.jpg") center;
+    background: url("../assets/bg/bg_landing_2.jpg") center;
 }
 
 .landing__screens-wrapper {

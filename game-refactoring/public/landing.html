@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Chicken fight monsters</title>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/landing.css">
 </head>
 <body>
 <main class="landing__container">
@@ -13,9 +14,9 @@
         <div class="landing__head-content">
             <h1 class="landing__heading landing__head-heading">Chicken fight monsters</h1>
             <p class="landing__head-text">Fight monsters and save the Chicken!</p>
-            <button class="btn btn__start-game">Play game</button>
+            <button class="btn btn_start-game">Play game</button>
         </div>
-        <img class="landing__head-chicken" src="src/player/chicken.png">
+        <img class="landing__head-chicken" src="./assets/player/chicken.png">
     </section>
 
     <section class="landing__section landing__about">
@@ -43,9 +44,9 @@
     <section class="landing__section landing__screens">
         <h2 class="landing__heading landing__screens-heading">Game screens</h2>
         <div class="landing__screens-wrapper">
-            <img src="src/screens/screen_task.png" alt="screen" class="landing__screens-item">
-            <img src="src/screens/screen_game.jpg" alt="screen" class="landing__screens-item">
-            <img src="src/screens/screen_task_2.jpg" alt="screen" class="landing__screens-item">
+            <img src="./assets/screens/screen_task.png" alt="screen" class="landing__screens-item">
+            <img src="./assets/screens/screen_game.jpg" alt="screen" class="landing__screens-item">
+            <img src="./assets/screens/screen_task_2.jpg" alt="screen" class="landing__screens-item">
         </div>
 
     </section>
@@ -57,7 +58,7 @@
 </main>
 
 <script>
-    document.querySelector('.btn__start-game')
+    document.querySelector('.btn_start-game')
         .addEventListener('click', function () {
             document.location = 'index.html'
         })
