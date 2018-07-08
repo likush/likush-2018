@@ -1,0 +1,65 @@
+.btn {
+    width: 150px;
+    height: 40px;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    line-height: .7;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: 0;
+}
+
+.btn_action {
+    margin-right: 30px;
+    background-color: #88446f;
+}
+
+.btn_action:last-child {
+    margin: 0;
+}
+
+.btn_action:hover {
+    background-color: #773c61;
+}
+
+.btn_new-game {
+    position: absolute;
+    left: 50px;
+    background-color: #96be4b;
+}
+
+.btn_new-game:hover {
+    background-color: #83a93d;
+}
+
+.btn_form {
+    background-color: #ff8087;
+    height: 50px;
+}
+
+.btn_form:hover {
+    background-color: #e6646e;
+}
+
+.btn_registration {
+    width: 200px;
+}
+
+.btn_close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    line-height: .5;
+    background: transparent;
+    color: #804169;
+    border: none;
+    cursor: pointer;
+    outline: 0;
+}
+
+.btn_close:hover {
+    font-weight: bold;
+}

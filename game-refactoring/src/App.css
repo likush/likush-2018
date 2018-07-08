@@ -1,0 +1,113 @@
+/*general styles*/
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Mostly Mono", sans-serif;
+    font-size: 2rem
+}
+
+.container {
+    height: 100vh;
+    background: #93d6ff url("img/bg/bg_game.jpg") repeat no-repeat center bottom;
+}
+
+h1, h2, p, button, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+/*main*/
+.main {
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 30px;
+}
+
+.actions {
+    position: absolute;
+    bottom: 45px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 50px;
+}
+
+/*heroes*/
+.heroes__wrapper {
+    display: flex;
+    position: absolute;
+    bottom: 190px;
+    justify-content: center;
+    width: 100%;
+}
+
+.heroes {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-width: 700px;
+}
+
+/*show hp*/
+.visible-change-hp {
+    display: none;
+    position: relative;
+    bottom: 50px;
+    animation: showDamage 1s alternate;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ca525c;
+    text-align: center;
+}
+
+@keyframes showDamage {
+    0% {
+        bottom: -100px;
+
+    }
+    100% {
+        bottom: 50px;
+    }
+}
+
+/*animation attack*/
+.attack {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.attack__img {
+    position: relative;
+    left: 0;
+    height: 128px;
+    width: 128px;
+    animation: 2s;
+    animation-iteration-count: 1;
+    z-index: 15;
+}
+
+@keyframes playerAttack {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 80%;
+    }
+}
+
+@keyframes monsterAttack {
+    0% {
+        left: 85%;
+        transform: scaleX(-1);
+    }
+    100% {
+        left: 0;
+        transform: scaleX(-1);
+    }
+}

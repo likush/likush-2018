@@ -1,0 +1,40 @@
+.health-bar_wrapper {
+    width: 300px;
+    overflow-wrap: break-word;
+    text-align: center;
+    color: white;
+}
+
+.health-bar__group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.health-bar {
+    position: relative;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: #ebebeb;
+    border: 1px solid #e6646e;
+    color: #fff;
+    text-align: center;
+}
+
+.health-bar__inner {
+    height: 100%;
+    background-color: #fbacac;
+}
+
+.health-bar__name {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.health-bar__value {
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    font-size: 1rem;
+}
