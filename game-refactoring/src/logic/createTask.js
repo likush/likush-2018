@@ -1,14 +1,5 @@
 import { vocabulary } from './vocabulary.js'
 
-const taskTemplate = `
-    <p class="modal__task">{content}</p>
-    <form class="form form__task">
-        <label>
-            <input name="answer" class="form__input modal__input" type="text" required>
-        </label>
-        <button class="btn form__btn modal__btn">Submit</button>
-    </form>`
-
 function createMathTask () {
     const SIGNS = ['+', '-', '*']
     const a = Math.round(Math.random() * 10)
@@ -18,7 +9,7 @@ function createMathTask () {
     const result = operation(a, b)
     return {
         caption: 'Give your decision here',
-        taskHTML: taskTemplate.replace('{content}', a + ' ' + sign + ' ' + b + ' ='),
+        taskText: a + ' ' + sign + ' ' + b + ' =',
         checkResult: answer => +answer === result
     }
 }
@@ -28,7 +19,7 @@ function createTranslateTask () {
     const word = keys[Math.floor(Math.random() * keys.length)]
     return {
         caption: 'Translate the word',
-        taskHTML: taskTemplate.replace('{content}', word),
+        taskText: word,
         checkResult: answer => vocabulary[word].includes(answer)
     }
 }
