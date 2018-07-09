@@ -8,7 +8,10 @@ import { Form } from './components/Form'
 import { Input } from './components/Input'
 import { createMonster } from './logic/createMonster'
 import { selectTask } from './logic/createTask'
-import chicken from '../src/img/player/chicken.png'
+import chicken from './img/player/chicken.png'
+import fireworks from './img/fireworks.png'
+import monsterAttackSound from './sounds/monster-attack.wav'
+import playerAttackSound from './sounds/player-attack.wav'
 
 class App extends Component {
     constructor (props) {
@@ -101,7 +104,25 @@ class App extends Component {
             heroHp = 100
         }
 
-        this.setState({[hpState]: heroHp})
+        let attackTarget
+        if (multiplier === -1 && hpState === 'playerHp') {
+            attackTarget = 'monsterAttack'
+            new Audio(monsterAttackSound).play()
+        } else if (multiplier === -1 && hpState === 'monsterHp') {
+            attackTarget = 'playerAttack'
+            new Audio(playerAttackSound).play()
+        }
+
+        this.setState({
+            [hpState]: heroHp,
+            attackTarget: attackTarget
+        })
+
+        clearTimeout(this.timeoutId)
+        this.timeoutId = setTimeout(
+            () => this.setState({attackTarget: null}),
+            2000
+        )
     }
 
     render () {
@@ -120,7 +141,16 @@ class App extends Component {
                                     <img className="player__img" src={chicken} alt="player"/>
                                 </div>
                             </Hero>
-                            <div className="attack"/>
+                            <div className="attack">
+                                <img className="attack__img"
+                                     style={{
+                                         animationName: this.state.attackTarget,
+                                         display: this.state.attackTarget ? 'block' : 'none'
+                                     }}
+                                     src={fireworks}
+                                     alt="attackImg"
+                                />
+                            </div>
                             <Hero hp={this.state.monsterHp}>
                                 <div className="monster">
                                     <img className="monster__body" src={this.state.monster.parts[0]} alt="body"/>
