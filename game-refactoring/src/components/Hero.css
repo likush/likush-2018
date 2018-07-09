@@ -1,0 +1,54 @@
+/*show hp*/
+.visible-change-hp {
+    position: relative;
+    bottom: 50px;
+    animation: 1s alternate;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ca525c;
+    text-align: center;
+}
+
+@keyframes showDamage {
+    0% {
+        bottom: -100px;
+
+    }
+    100% {
+        bottom: 50px;
+    }
+}
+
+.player {
+    z-index: 10;
+}
+
+.player__img {
+    position: relative;
+    height: 130px;
+}
+
+.monster {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.monster__body {
+    position: relative;
+    top: 5px;
+    height: 130px;
+}
+
+.monster__legs {
+    height: 40px;
+}
+
+.monster__weapon {
+    position: absolute;
+    bottom: 40px;
+    right: -40px;
+    height: 70px;
+}

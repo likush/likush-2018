@@ -53,28 +53,6 @@ ul {
     min-width: 700px;
 }
 
-/*show hp*/
-.visible-change-hp {
-    display: none;
-    position: relative;
-    bottom: 50px;
-    animation: showDamage 1s alternate;
-    font-size: 3rem;
-    font-weight: bold;
-    color: #ca525c;
-    text-align: center;
-}
-
-@keyframes showDamage {
-    0% {
-        bottom: -100px;
-
-    }
-    100% {
-        bottom: 50px;
-    }
-}
-
 /*animation attack*/
 .attack {
     display: flex;

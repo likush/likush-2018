@@ -4,15 +4,12 @@ import './Input.css'
 
 function Input (props) {
     return (
-        <label>
-            {props.heading}
-            <input className={cn('form__input', props.className)}
-                   type="text"
-                   name={props.name}
-                   onChange={props.onChange}
-                   autoFocus
-                   required/>
-        </label>
+        <input className={cn('form__input', props.className)}
+               type="text"
+               name={props.name}
+               onChange={props.onChange}
+               autoFocus
+               required/>
     )
 }
 

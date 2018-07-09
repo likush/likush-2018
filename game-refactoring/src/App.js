@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import './App.css'
 import { Button } from './components/Button'
 import { HealthBar } from './components/HealthBar'
-import { Player } from './components/Player'
-import { Monster } from './components/Monster'
+import { Hero } from './components/Hero'
 import { Modal } from './components/Modal'
 import { Form } from './components/Form'
 import { Input } from './components/Input'
 import { createMonster } from './logic/createMonster'
 import { selectTask } from './logic/createTask'
+import chicken from '../src/img/player/chicken.png'
 
 class App extends Component {
     constructor (props) {
@@ -81,32 +81,27 @@ class App extends Component {
 
     handleCorrectAnswer (spell) {
         if (spell === 'attack') {
-            this.applySpell('monster', -1)
+            this.applySpell('monsterHp', -1)
         } else if (spell === 'heal') {
-            this.applySpell('player', 1)
+            this.applySpell('playerHp', 1)
         }
     }
 
     handleWrongAnswer () {
-        this.applySpell('player', -1)
+        this.applySpell('playerHp', -1)
     }
 
-    applySpell (hero, multiplier) {
+    applySpell (hpState, multiplier) {
         const hpChange = (Math.floor(Math.random() * 10) + 10) * multiplier
-        // hpPopupEl.innerHTML = (hpChange > 0 ? '+' + hpChange : hpChange)
-        // hpPopupEl.classList.add('display-block')
-        // setTimeout(() => {
-        //     hpPopupEl.classList.remove('display-block')
-        // }, 2000)
-        //
-        // hero.hp += hpChange
-        // if (hero.hp < 0) {
-        //     hero.hp = 0
-        // } else if (hero.hp > 100) {
-        //     hero.hp = 100
-        // }
-        //
-        // changeHealthBar(hero.healthBarEl, hero.hp)
+        let heroHp = this.state[hpState]
+        heroHp += hpChange
+        if (heroHp < 0) {
+            heroHp = 0
+        } else if (heroHp > 100) {
+            heroHp = 100
+        }
+
+        this.setState({[hpState]: heroHp})
     }
 
     render () {
@@ -120,9 +115,19 @@ class App extends Component {
 
                     <div className="heroes__wrapper">
                         <div className="heroes">
-                            <Player/>
+                            <Hero hp={this.state.playerHp}>
+                                <div className="player">
+                                    <img className="player__img" src={chicken} alt="player"/>
+                                </div>
+                            </Hero>
                             <div className="attack"/>
-                            <Monster parts={this.state.monster.parts}/>
+                            <Hero hp={this.state.monsterHp}>
+                                <div className="monster">
+                                    <img className="monster__body" src={this.state.monster.parts[0]} alt="body"/>
+                                    <img className="monster__legs" src={this.state.monster.parts[1]} alt="legs"/>
+                                    <img className="monster__weapon" src={this.state.monster.parts[2]} alt="weapon"/>
+                                </div>
+                            </Hero>
                         </div>
                     </div>
 
