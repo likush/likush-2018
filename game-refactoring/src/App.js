@@ -14,6 +14,11 @@ import fireworks from './img/fireworks.png'
 import monsterAttackSound from './sounds/monster-attack.wav'
 import playerAttackSound from './sounds/player-attack.wav'
 
+const Spell = {
+    ATTACK: 'attack',
+    HEAL: 'heal'
+}
+
 class App extends Component {
     constructor (props) {
         super(props)
@@ -74,30 +79,29 @@ class App extends Component {
         const answer = new FormData(ev.target).get('answer').trim()
         const isAnswerCorrect = currentTask.checkResult(answer)
 
-        if (isAnswerCorrect) {
-            this.handleCorrectAnswer(spell)
-        } else {
-            this.handleWrongAnswer()
+        this.applySpell(spell, isAnswerCorrect)
+            .then(() => this.checkGameResult())
+    }
+
+    applySpell (spell, isAnswerCorrect) {
+        let multiplier, hpStateProp, attackTarget, sound
+        if (isAnswerCorrect && spell === Spell.ATTACK) {
+            multiplier = -1
+            hpStateProp = 'monsterHp'
+            attackTarget = 'playerAttack'
+            sound = playerAttackSound
+        } else if (isAnswerCorrect && spell === Spell.HEAL) {
+            multiplier = 1
+            hpStateProp = 'playerHp'
+        } else if (!isAnswerCorrect) {
+            multiplier = -1
+            hpStateProp = 'playerHp'
+            attackTarget = 'monsterAttack'
+            sound = monsterAttackSound
         }
 
-        // checkGameResult()
-    }
-
-    handleCorrectAnswer (spell) {
-        if (spell === 'attack') {
-            this.applySpell('monsterHp', -1)
-        } else if (spell === 'heal') {
-            this.applySpell('playerHp', 1)
-        }
-    }
-
-    handleWrongAnswer () {
-        this.applySpell('playerHp', -1)
-    }
-
-    applySpell (hpState, multiplier) {
         const hpChange = (Math.floor(Math.random() * 10) + 10) * multiplier
-        let heroHp = this.state[hpState]
+        let heroHp = this.state[hpStateProp]
         heroHp += hpChange
         if (heroHp < 0) {
             heroHp = 0
@@ -105,22 +109,20 @@ class App extends Component {
             heroHp = 100
         }
 
-        let attackTarget
-        if (multiplier === -1 && hpState === 'playerHp') {
-            attackTarget = 'monsterAttack'
-            new Audio(monsterAttackSound).play()
-        } else if (multiplier === -1 && hpState === 'monsterHp') {
-            attackTarget = 'playerAttack'
-            new Audio(playerAttackSound).play()
-        }
+        new Audio(sound).play()
 
         this.setState({
-            [hpState]: heroHp,
+            [hpStateProp]: heroHp,
             attackTarget: attackTarget
         })
 
-        clearTimeout(this.timeoutId)
-        this.timeoutId = this.setStateWithTimeout({attackTarget: null}, 2000)
+        return new Promise(resolve => {
+            clearTimeout(this.timeoutId)
+            this.timeoutId = setTimeout(() => {
+                this.setState({attackTarget: null})
+                resolve()
+            }, 2000)
+        })
     }
 
     checkGameResult () {
@@ -135,21 +137,17 @@ class App extends Component {
                 defeatedMonsters: this.state.defeatedMonsters + 1
             })
 
-            this.setStateWithTimeout({modal: null}, 2000)
+            setTimeout(
+                () => this.setState({modal: null}),
+                2000
+            )
         }
     }
 
-    setStateWithTimeout (nextState, timeout) {
-        return setTimeout(
-            () => this.setState(nextState),
-            timeout
-        )
-    }
-
     showResults () {
-        const records = this.loadRecords()
+        const records = loadRecords()
         records.unshift({playerName: this.state.player, defeatedMonsters: this.state.defeatedMonsters})
-        this.saveRecords(records)
+        saveRecords(records)
 
         this.setState({
             modal: {
@@ -157,14 +155,6 @@ class App extends Component {
                 content: <ResultsTable records={records}/>
             }
         })
-    }
-
-    loadRecords () {
-        return JSON.parse(localStorage.getItem('records')) || []
-    }
-
-    saveRecords (records) {
-        localStorage.setItem('records', JSON.stringify(records))
     }
 
     render () {
@@ -222,6 +212,14 @@ class App extends Component {
             </div>
         )
     }
+}
+
+function loadRecords () {
+    return JSON.parse(localStorage.getItem('records')) || []
+}
+
+function saveRecords (records) {
+    localStorage.setItem('records', JSON.stringify(records))
 }
 
 export default App

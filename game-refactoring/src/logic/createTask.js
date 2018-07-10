@@ -20,7 +20,7 @@ function createTranslateTask () {
     return {
         caption: 'Translate the word',
         taskText: word,
-        checkResult: answer => vocabulary[word].includes(answer)
+        checkResult: answer => vocabulary[word].includes(answer.toLowerCase())
     }
 }
 
