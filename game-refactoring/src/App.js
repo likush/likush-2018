@@ -6,6 +6,7 @@ import { Hero } from './components/Hero'
 import { Modal } from './components/Modal'
 import { Form } from './components/Form'
 import { Input } from './components/Input'
+import { ResultsTable } from './components/ResultsTable'
 import { createMonster } from './logic/createMonster'
 import { selectTask } from './logic/createTask'
 import chicken from './img/player/chicken.png'
@@ -119,10 +120,51 @@ class App extends Component {
         })
 
         clearTimeout(this.timeoutId)
-        this.timeoutId = setTimeout(
-            () => this.setState({attackTarget: null}),
-            2000
+        this.timeoutId = this.setStateWithTimeout({attackTarget: null}, 2000)
+    }
+
+    checkGameResult () {
+        if (this.state.playerHp === 0) {
+            this.showResults()
+        } else if (this.state.monsterHp === 0) {
+            this.setState({
+                modal: {
+                    heading: 'Victory!',
+                    content: 'Let\'s fight again!'
+                },
+                defeatedMonsters: this.state.defeatedMonsters + 1
+            })
+
+            this.setStateWithTimeout({modal: null}, 2000)
+        }
+    }
+
+    setStateWithTimeout (nextState, timeout) {
+        return setTimeout(
+            () => this.setState(nextState),
+            timeout
         )
+    }
+
+    showResults () {
+        const records = this.loadRecords()
+        records.unshift({playerName: this.state.player, defeatedMonsters: this.state.defeatedMonsters})
+        this.saveRecords(records)
+
+        this.setState({
+            modal: {
+                heading: 'Total results',
+                content: <ResultsTable records={records}/>
+            }
+        })
+    }
+
+    loadRecords () {
+        return JSON.parse(localStorage.getItem('records')) || []
+    }
+
+    saveRecords (records) {
+        localStorage.setItem('records', JSON.stringify(records))
     }
 
     render () {
