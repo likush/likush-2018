@@ -129,6 +129,10 @@ class App extends Component {
     checkGameResult () {
         if (this.state.playerHp === 0) {
             this.showResults()
+            setTimeout(
+                () => this.setState({modal: null}),
+                4000
+            )
         } else if (this.state.monsterHp === 0) {
             const nextState = this.createNewGameState(true)
             nextState.defeatedMonsters = this.state.defeatedMonsters + 1
