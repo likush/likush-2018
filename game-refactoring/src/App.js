@@ -9,6 +9,7 @@ import { Input } from './components/Input'
 import { ResultsTable } from './components/ResultsTable'
 import { createMonster } from './logic/createMonster'
 import { selectTask } from './logic/createTask'
+import { loadRecords, saveRecords } from './utils/recordsStore'
 import chicken from './img/player/chicken.png'
 import fireworks from './img/fireworks.png'
 import monsterAttackSound from './sounds/monster-attack.wav'
@@ -22,25 +23,32 @@ const Spell = {
 class App extends Component {
     constructor (props) {
         super(props)
-        this.state = {
+        this.state = this.createNewGameState()
+        this.state.player = {}
+        this.state.defeatedMonsters = 0
+        this.state.modal = {
+            heading: 'Registration',
+            content: (<Form onSubmit={ev => this.handleModalHide(ev)}>
+                <label>
+                    Your name
+                    <Input className="form__input_registration"
+                           name="first-name"
+                           onChange={ev => this.handlePlayerNameChange(ev)}/>
+                </label>
+                <Button className="btn_form btn_registration">Start game</Button>
+            </Form>)
+        }
+    }
+
+    createNewGameState (isNextRound) {
+        const nextState = {
             monster: createMonster(),
             monsterHp: 100,
-            player: {},
             playerHp: 100,
-            defeatedMonsters: 0,
-            modal: {
-                heading: 'Registration',
-                content: (<Form onSubmit={ev => this.handleModalHide(ev)}>
-                    <label>
-                        Your name
-                        <Input className="form__input_registration"
-                               name="first-name"
-                               onChange={ev => this.handlePlayerNameChange(ev)}/>
-                    </label>
-                    <Button className="btn_form btn_registration">Start game</Button>
-                </Form>)
-            }
         }
+
+        if (!isNextRound) nextState.defeatedMonsters = 0
+        return nextState
     }
 
     handlePlayerNameChange (ev) {
@@ -129,14 +137,14 @@ class App extends Component {
         if (this.state.playerHp === 0) {
             this.showResults()
         } else if (this.state.monsterHp === 0) {
-            this.setState({
-                modal: {
-                    heading: 'Victory!',
-                    content: 'Let\'s fight again!'
-                },
-                defeatedMonsters: this.state.defeatedMonsters + 1
-            })
+            const nextState = this.createNewGameState(true)
+            nextState.defeatedMonsters = this.state.defeatedMonsters + 1
+            nextState.modal = {
+                heading: 'Victory!',
+                content: 'Let\'s fight again!'
+            }
 
+            this.setState(nextState)
             setTimeout(
                 () => this.setState({modal: null}),
                 2000
@@ -194,7 +202,9 @@ class App extends Component {
                     </div>
 
                     <div className="actions">
-                        <Button className="btn_new-game">New game</Button>
+                        <Button className="btn_new-game" onClick={() => this.setState(this.createNewGameState())}>
+                            New game
+                        </Button>
                         <div className="action__btn-group">
                             <Button className="btn_action" onClick={() => this.handleSpellClick('attack')}>
                                 Attack
@@ -212,14 +222,6 @@ class App extends Component {
             </div>
         )
     }
-}
-
-function loadRecords () {
-    return JSON.parse(localStorage.getItem('records')) || []
-}
-
-function saveRecords (records) {
-    localStorage.setItem('records', JSON.stringify(records))
 }
 
 export default App
