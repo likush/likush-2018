@@ -89,3 +89,30 @@ ul {
         transform: scaleX(-1);
     }
 }
+
+.game-results__img {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    animation: movingChicken 1s alternate infinite;
+    font-size: 2rem;
+    color: #804169;
+    font-weight: bold;
+}
+
+.game-results__img-text {
+    margin-bottom: 20px;
+    color: white;
+}
+
+@keyframes movingChicken {
+    0% {
+        bottom: -130px;
+    }
+    100% {
+        bottom: -90px;
+    }
+}

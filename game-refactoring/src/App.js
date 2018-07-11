@@ -26,9 +26,8 @@ class App extends Component {
         this.state = this.createNewGameState()
         this.state.player = {}
         this.state.defeatedMonsters = 0
-        this.state.modal = {
-            heading: 'Registration',
-            content: (<Form onSubmit={ev => this.handleModalHide(ev)}>
+        this.state.modal = (<Modal heading='Registration'>
+            <Form onSubmit={ev => this.handleModalHide(ev)}>
                 <label>
                     Your name
                     <Input className="form__input_registration"
@@ -36,8 +35,8 @@ class App extends Component {
                            onChange={ev => this.handlePlayerNameChange(ev)}/>
                 </label>
                 <Button className="btn_form btn_registration">Start game</Button>
-            </Form>)
-        }
+            </Form>
+        </Modal>)
     }
 
     createNewGameState (isNextRound) {
@@ -64,21 +63,15 @@ class App extends Component {
         const currentTask = selectTask()
 
         this.setState({
-            modal: {
-                heading: currentTask.caption,
-                content: (
-                    <React.Fragment>
-                        <p className="modal__task">{currentTask.taskText}</p>
-                        <Form onSubmit={ev => this.handleAnswer(ev, spell, currentTask)}>
-                            <label>
-                                <Input className="form__input_answer" name="answer"/>
-                            </label>
-                            <Button className="btn_form">Submit</Button>
-                        </Form>
-                    </React.Fragment>
-                ),
-                onClose: (ev) => this.handleModalHide(ev)
-            }
+            modal: (<Modal heading={currentTask.caption} onClose={ev => this.handleModalHide(ev)}>
+                <p className="modal__task">{currentTask.taskText}</p>
+                <Form onSubmit={ev => this.handleAnswer(ev, spell, currentTask)}>
+                    <label>
+                        <Input className="form__input_answer" name="answer"/>
+                    </label>
+                    <Button className="btn_form">Submit</Button>
+                </Form>
+            </Modal>)
         })
     }
 
@@ -139,10 +132,7 @@ class App extends Component {
         } else if (this.state.monsterHp === 0) {
             const nextState = this.createNewGameState(true)
             nextState.defeatedMonsters = this.state.defeatedMonsters + 1
-            nextState.modal = {
-                heading: 'Victory!',
-                content: 'Let\'s fight again!'
-            }
+            nextState.modal = <Modal heading='Victory!'>Let's fight again!</Modal>
 
             this.setState(nextState)
             setTimeout(
@@ -154,14 +144,18 @@ class App extends Component {
 
     showResults () {
         const records = loadRecords()
-        records.unshift({playerName: this.state.player, defeatedMonsters: this.state.defeatedMonsters})
+        records.unshift({playerName: this.state.player.name, defeatedMonsters: this.state.defeatedMonsters})
         saveRecords(records)
 
         this.setState({
-            modal: {
-                heading: 'Total results',
-                content: <ResultsTable records={records}/>
-            }
+            modal: (<Modal heading='Total results' extra={(
+                <div className="game-results__img">
+                    <p className="game-results__img-text">You are great!</p>
+                    <img className="game-results__chicken" src={chicken} alt="chicken"/>
+                </div>
+            )}>
+                <ResultsTable records={records}/>
+            </Modal>)
         })
     }
 
@@ -215,10 +209,7 @@ class App extends Component {
                         </div>
                     </div>
                 </main>
-                {this.state.modal && (
-                    <Modal heading={this.state.modal.heading} content={this.state.modal.content}
-                           onClose={this.state.modal.onClose}/>
-                )}
+                {this.state.modal}
             </div>
         )
     }
