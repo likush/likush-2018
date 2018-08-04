@@ -3,7 +3,7 @@
 }
 
 .game__options {
-    position: absolute;
+    position: fixed;
     top: 30px;
     right: 30px;
 }
@@ -21,7 +21,7 @@
 
 .copyright {
     font-family: 'Montserrat', sans-serif;
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     right: 35px;
     color: #8bb080;

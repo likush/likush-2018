@@ -81,9 +81,7 @@ class App extends React.Component {
                                                     email={this.state.email}
                                                     cardsData={this.state.cardsData}
                                                     onNewGame={this.handleNewGame}/>
-
     }
-
 }
 
 export default App

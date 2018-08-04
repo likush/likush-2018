@@ -15,7 +15,7 @@ function ResultsTable (props) {
                 </thead>
                 <tbody>
                 {props.records.map((record, i) => (
-                    <tr key={i}>
+                    <tr className="table-results__row" key={i}>
                         <td className="table-results__cell">{record.username}</td>
                         <td className="table-results__cell">{record.email}</td>
                         <td className="table-results__cell">{record.score}</td>

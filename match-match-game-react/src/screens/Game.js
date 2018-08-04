@@ -59,12 +59,11 @@ class Game extends React.Component {
                 }
 
                 <p className="copyright">
-                    Drawings by
-                    <a className="copyright__link"
-                       rel="noopener noreferrer"
-                       target="_blank"
-                       href="https://dribbble.com/Necklaceee">
-                        NOZ Creative
+                    Drawings by <a className="copyright__link"
+                                   rel="noopener noreferrer"
+                                   target="_blank"
+                                   href="https://dribbble.com/Necklaceee">
+                    NOZ Creative
                     </a>
                 </p>
             </main>

@@ -8,6 +8,11 @@ import { Input } from '../components/Input'
 import './Start.css'
 
 class Start extends React.Component {
+    handleSubmit = () => {
+        this.props.onScreenChange('game')
+        this.props.onCreateCards()
+    }
+
     render () {
         return (
             <main className="start-content">
@@ -61,7 +66,7 @@ class Start extends React.Component {
                         </div>
                     </div>
 
-                    <Form>
+                    <Form onSubmit={this.handleSubmit}>
                         <Input onChange={this.props.onPlayerNameChange}
                                label='name'
                                name='name'
@@ -72,10 +77,7 @@ class Start extends React.Component {
                                name='email'
                                type='email'
                                placeholder={'Your email'}/>
-                        <Button className='btn_start-game' onClick={() => {
-                            this.props.onScreenChange('game')
-                            this.props.onCreateCards()
-                        }}>
+                        <Button className='btn_start-game'>
                             Start game
                         </Button>
                     </Form>

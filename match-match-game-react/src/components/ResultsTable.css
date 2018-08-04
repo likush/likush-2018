@@ -18,6 +18,10 @@
     letter-spacing: 1px;
 }
 
+.table-results__row:first-child {
+    background-color: rgba(175, 215, 85, .3);
+}
+
 .table__cell_head {
     color: #796284;
 }
