@@ -1,0 +1,79 @@
+.card__item {
+    margin: 15px;
+    perspective: 1000px;
+}
+
+.card__img {
+    width: 120px;
+    height: 120px;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.33s linear 1s, visibility 0s linear 1.33s;
+    transition-delay: 1s;
+}
+
+.card__item,
+.card__front,
+.card__back {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.card__flipper {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.card__front,
+.card__back {
+    backface-visibility: hidden;
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 15px rgba(78, 87, 87, .5);
+}
+
+.card__front:hover,
+.card__back:hover {
+    box-shadow: 0 3px 15px rgba(78, 87, 87, .7);
+}
+
+.card__back {
+    background-color: #ffffff;
+    z-index: 5;
+    transform: rotateY(180deg);
+}
+
+.card__back-img {
+    width: 120px;
+    height: 120px;
+}
+
+.card__front {
+    background-color: #f0f0f0;
+}
+
+.geometric {
+    background-image: url("../img/cards-bg/1.png");
+}
+
+.dotted {
+    background-image: url("../img/cards-bg/2.png");
+}
+
+.tissue {
+    background-image: url("../img/cards-bg/3.png");
+}

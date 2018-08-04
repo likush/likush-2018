@@ -1,0 +1,17 @@
+.shirt {
+    margin-right: 45px;
+    width: 130px;
+    height: 130px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(78, 87, 87, 0.5);
+    cursor: pointer;
+}
+
+.shirt:hover {
+    box-shadow: 0 3px 15px rgba(78, 87, 87, .7);
+}
+
+.shirt:last-child {
+    margin-right: 0;
+}

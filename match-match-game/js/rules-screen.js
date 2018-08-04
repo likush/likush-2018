@@ -41,10 +41,7 @@ const rulesTemplate = `
                     First name
                     <input class="registration-form__input" type="text" required name="first-name" value="{first-name}">
                 </label>
-                <label class="registration-form__item">
-                    Last name
-                    <input class="registration-form__input" type="text" required name="last-name" value="{last-name}">
-                </label>
+               
                 <label class="registration-form__item">
                     Email
                     <input class="registration-form__input" type="email" required name="email" value="{email}">

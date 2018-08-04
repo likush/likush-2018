@@ -1,0 +1,157 @@
+.start-content {
+    display: grid;
+    grid-template-columns: 420px auto;
+    padding: 0 100px;
+    height: 100vh;
+}
+
+.about-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px;
+    background-color: #9cc491;
+    color: #ffffff;
+}
+
+.heading {
+    font-weight: 400;
+    font-size: 3rem;
+    margin: 0 0 25px;
+    color: #9bc390;
+}
+
+.heading_inverted {
+    color: #ffffff;
+}
+
+/*game description*/
+.game-description {
+    margin-bottom: 80px;
+}
+
+.game-description__heading {
+    font-size: 4rem;
+}
+
+.game-description__text {
+    margin: 0 0 10px;
+}
+
+.game-description__text, .rules__list {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*rules*/
+.rules__list {
+    margin: 0;
+    padding-left: 15px;
+}
+
+.rules__item {
+    margin-bottom: 15px;
+}
+
+.rules__item:last-child {
+    margin-bottom: 0;
+}
+
+/*game options*/
+.game-options {
+    text-align: center;
+    align-self: center;
+}
+
+/*shirts*/
+.shirts {
+    margin-bottom: 60px;
+}
+
+.shirts__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.shirt {
+    margin-right: 45px;
+    width: 130px;
+    height: 130px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(78, 87, 87, 0.5);
+    cursor: pointer;
+}
+
+.shirt:hover {
+    box-shadow: 0 3px 15px rgba(78, 87, 87, .7);
+}
+
+.shirt:last-child {
+    margin-right: 0;
+}
+
+.shirt_geometric {
+    background-image: url("../img/cards-bg/1.png");
+}
+
+.shirt_dotted {
+    background-image: url("../img/cards-bg/2.png");
+}
+
+.shirt_tissue {
+    background-image: url("../img/cards-bg/3.png");
+}
+
+.shirt_selected,
+.shirt_selected:hover {
+    box-shadow: 0 3px 25px #796284;
+}
+
+/*difficulty*/
+.difficulty {
+    margin-bottom: 80px;
+}
+
+.difficulty-btn-group {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_difficulty {
+    padding: 5px 25px;
+    margin-right: 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #9f8aa8;
+    color: #9f8aa8;
+}
+
+.btn_difficulty:hover {
+    background-color: rgba(135, 108, 147, .7);
+    color: #ffffff;
+}
+
+.btn_difficulty-selected,
+.btn_difficulty-selected:hover {
+    background-color: rgba(135, 108, 147, 1);
+    color: #ffffff;
+    box-shadow: 0 3px 20px #796284;
+}
+
+.btn_difficulty:last-child {
+    margin-right: 0;
+}
+
+/*btn start game*/
+.btn_start-game {
+    display: block;
+    margin: 40px auto 0;
+    background-color: #e46e75;
+    color: white;
+    width: 200px;
+    height: 70px;
+}
+
+.btn_start-game:hover {
+    background-color: #db3d48;
+}

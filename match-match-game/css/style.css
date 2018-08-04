@@ -75,7 +75,6 @@ p {
     grid-template-columns: 420px auto;
     padding: 0 100px;
     height: 100vh;
-
 }
 
 .about-game {
@@ -123,7 +122,7 @@ p {
 }
 
 .card-shirts {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 .card-shirts__wrapper {
@@ -167,7 +166,7 @@ p {
 }
 
 .difficulty {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 .difficulty-btn-group {
@@ -200,9 +199,9 @@ p {
 .start-game__btn {
     background-color: #e46e75;
     color: white;
-    font-size: 3rem;
-    width: 280px;
-    height: 90px;
+    font-size: 2rem;
+    width: 200px;
+    height: 70px;
 }
 
 /*game-field*/
