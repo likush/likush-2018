@@ -1,8 +1,7 @@
 .game-results {
     display: flex;
-    height: 100%;
+    padding: 30px 0;
     justify-content: center;
-    align-items: center;
 }
 
 .table-results {

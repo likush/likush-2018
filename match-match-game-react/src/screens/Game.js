@@ -21,10 +21,24 @@ class Game extends React.Component {
             email: this.props.email,
             score: this.currentScore
         }
-        this.setState({
-            isGameOver: true,
-            records: this.state.records.concat(currentResult)
+
+        window.fetch('http://mmg-score.herokuapp.com', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(currentResult)
         })
+
+        window.fetch('http://mmg-score.herokuapp.com')
+            .then(response => response.json())
+            .then(results => {
+                this.setState({
+                    isGameOver: true,
+                    records: [currentResult].concat(results.result)
+                })
+            })
     }
 
     render () {

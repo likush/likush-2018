@@ -12,6 +12,10 @@ class CardsField extends React.Component {
         }
     }
 
+    componentWillUnmount () {
+        clearTimeout(this.timeoutId)
+    }
+
     handleFlip (index, image) {
         if (!this.openedCard) {
             this.openedCard = {index: index, image: image}
