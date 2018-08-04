@@ -5,10 +5,10 @@ import './CardsField.css'
 class CardsField extends React.Component {
     constructor (props) {
         super(props)
+        this.matchedCards = 0
         this.state = {
             hiddenIds: [],
             flippedIds: [],
-            matchedCards: 2
         }
     }
 
@@ -20,8 +20,8 @@ class CardsField extends React.Component {
             const nextState = {flippedIds: [index, this.openedCard.index]}
             if (this.openedCard.image === image && this.openedCard.index !== index) {
                 nextState.hiddenIds = this.state.hiddenIds.concat(index, this.openedCard.index)
-                this.setState({matchedCards: this.state.matchedCards + 2})
-                this.checkResult(this.state.matchedCards, this.props.difficulty)
+                this.matchedCards = this.matchedCards + 2
+                this.checkResult(this.matchedCards, this.props.difficulty)
             }
             this.openedCard = null
             this.setState(nextState)
@@ -35,7 +35,7 @@ class CardsField extends React.Component {
 
     checkResult (matchedCards, difficulty) {
         if (matchedCards === difficulty) {
-            console.log(true)
+            this.props.onAllCardsMatched()
         }
     }
 

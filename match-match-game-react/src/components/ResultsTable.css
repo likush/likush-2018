@@ -1,0 +1,24 @@
+.game-results {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-results {
+    font-size: 2rem;
+    border-collapse: collapse;
+    color: #ca525c;
+}
+
+.table-results__cell {
+    border: 1px solid #afd755;
+    padding: 15px 0;
+    width: 300px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.table__cell_head {
+    color: #796284;
+}

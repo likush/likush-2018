@@ -63,17 +63,11 @@ class Start extends React.Component {
 
                     <Form>
                         <Input onChange={this.props.onPlayerNameChange}
-
-                               value='li'
-
                                label='name'
                                name='name'
                                type='text'
                                placeholder={'Your name'}/>
                         <Input onChange={this.props.onPlayerEmailChange}
-
-                               value='li@li'
-
                                label='Email'
                                name='email'
                                type='email'

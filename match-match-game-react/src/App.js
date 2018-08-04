@@ -77,8 +77,11 @@ class App extends React.Component {
             />
             : this.state.screen === 'game' && <Game shirt={this.state.shirt}
                                                     difficulty={this.state.difficulty}
+                                                    name={this.state.name}
+                                                    email={this.state.email}
                                                     cardsData={this.state.cardsData}
                                                     onNewGame={this.handleNewGame}/>
+
     }
 
 }

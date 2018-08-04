@@ -1,5 +1,5 @@
 import React from 'react'
-import './Results.css'
+import './ResultsTable.css'
 
 function ResultsTable (props) {
     return (
@@ -7,7 +7,7 @@ function ResultsTable (props) {
             <table className="table-results">
                 <thead>
                 <tr>
-                    <th className="table-results__cell table-results__cell_head">Player name</th>
+                    <th className="table-results__cell table__cell_head">Player name</th>
                     <th className="table-results__cell table__cell_head">Player email</th>
                     <th className="table-results__cell table__cell_head">Time</th>
 
@@ -16,9 +16,9 @@ function ResultsTable (props) {
                 <tbody>
                 {props.records.map((record, i) => (
                     <tr key={i}>
-                        <td className="table-results__cell">{record.playerName}</td>
-                        <td className="table-results__cell">{record.playerEmail}</td>
-                        <td className="table-results__cell">{record.time}</td>
+                        <td className="table-results__cell">{record.username}</td>
+                        <td className="table-results__cell">{record.email}</td>
+                        <td className="table-results__cell">{record.score}</td>
                     </tr>
                 ))}
                 </tbody>
